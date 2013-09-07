@@ -250,10 +250,10 @@ public class TufanCircleSeekBar extends View
 				{
 					mUserIsMovingPointer = true;
 					
+					invalidate();
+					
 					if(mOnStartTrackingTouchListener != null)
 						mOnStartTrackingTouchListener.onStartTrackingTouch(this);
-					
-					invalidate();
 				}
 				// If user did not press pointer or center, report event not handled
 				else
@@ -297,10 +297,10 @@ public class TufanCircleSeekBar extends View
 			case MotionEvent.ACTION_UP:
 				mUserIsMovingPointer = false;
 				
+				invalidate();
+				
 				if(mOnStopTrackingTouchListener != null)
 					mOnStopTrackingTouchListener.onStopTrackingTouch(this);
-				
-				invalidate();
 				break;
 		}
 
