@@ -78,6 +78,8 @@ public class TufanCircleSeekBar extends View
 	private boolean mUserIsMovingPointer = false;
 	private OnProgressChangeListener mOnProgressChangeListener;
 	private OnSecondProgressChangeListener mOnSecondProgressChangeListener;
+	private OnStartTrackingTouchListener mOnStartTrackingTouchListener;
+	private OnStopTrackingTouchListener mOnStopTrackingTouchListener;
 	
 	private static final String STATE_PARENT = "parent";
 	private static final String STATE_ANGLE = "angle";
@@ -247,6 +249,10 @@ public class TufanCircleSeekBar extends View
 						&& y <= (pointerPosition[1] + mPointerHaloRadius))
 				{
 					mUserIsMovingPointer = true;
+					
+					if(mOnStartTrackingTouchListener != null)
+						mOnStartTrackingTouchListener.onStartTrackingTouch(this);
+					
 					invalidate();
 				}
 				// If user did not press pointer or center, report event not handled
@@ -290,6 +296,10 @@ public class TufanCircleSeekBar extends View
 				break;
 			case MotionEvent.ACTION_UP:
 				mUserIsMovingPointer = false;
+				
+				if(mOnStopTrackingTouchListener != null)
+					mOnStopTrackingTouchListener.onStopTrackingTouch(this);
+				
 				invalidate();
 				break;
 		}
@@ -420,6 +430,16 @@ public class TufanCircleSeekBar extends View
 	{
 		mOnSecondProgressChangeListener = listener;
 	}
+	
+	public void setOnStartTrackingTouchListener(OnStartTrackingTouchListener listener)
+	{
+		mOnStartTrackingTouchListener = listener;
+	}
+	
+	public void setOnStopTrackingTouchListener(OnStopTrackingTouchListener listener)
+	{
+		mOnStopTrackingTouchListener = listener;
+	}
 
 	public interface OnProgressChangeListener
 	{
@@ -429,5 +449,15 @@ public class TufanCircleSeekBar extends View
 	public interface OnSecondProgressChangeListener
 	{
 		public abstract void onSecondProgressChanged(TufanCircleSeekBar seekBar, int progress, boolean fromUser);
+	}
+	
+	public interface OnStartTrackingTouchListener
+	{
+		public abstract void onStartTrackingTouch(TufanCircleSeekBar seekbar);
+	}
+	
+	public interface OnStopTrackingTouchListener
+	{
+		public abstract void onStopTrackingTouch(TufanCircleSeekBar seekbar);
 	}
 }
