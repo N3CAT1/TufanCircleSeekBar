@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <declare-styleable name="TufanCircleSeekBar">
+        <attr name="wheel_stroke_width" format="integer" />
+        <attr name="pointer_radius" format="integer" />
+        <attr name="pointer_halo_radius" format="integer" />
+        <attr name="max" format="integer" />
+        <attr name="init_progress" format="integer" />
+        <attr name="show_text" format="boolean" />
+        <attr name="angle_start" format="integer" />
+        <attr name="angle_end" format="integer" />
+        <attr name="text_size" format="integer" />
+        <attr name="wheel_active_color" format="string" />
+        <attr name="wheel_unactive_color" format="string" />
+        <attr name="wheel_second_active_color" format="string" />
+        <attr name="pointer_color" format="string" />
+        <attr name="pointer_halo_color" format="string" />
+        <attr name="text_color" format="string" />
+    </declare-styleable>
+    
+</resources>
