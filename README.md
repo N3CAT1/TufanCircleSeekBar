@@ -8,7 +8,7 @@ A TufanCircleSeekBar inspired by Android HoloColorPicker designed by Necati TUFA
 # Documentation
 Add this to your xml
 ```xml
-<com.tufan.library.TufanCircleSeekBar
+<com.necatitufan.tufancircleseekbar.TufanCircleSeekBar
     android:id="@+id/tufanCircleSeekBar1"
     android:layout_width="250dp"
     android:layout_height="250dp"/>
